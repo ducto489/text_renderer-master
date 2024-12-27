@@ -42,7 +42,7 @@ def base_cfg(
     name: str, corpus, corpus_effects=None, layout_effects=None, layout=None, gray=True, perspective_transform=None
 ):
     return GeneratorCfg(
-        num_image=1000,
+        num_image=100,
         save_dir=OUT_DIR / name,
         render_cfg=RenderCfg(
             bg_dir=BG_DIR,
@@ -60,11 +60,11 @@ def no_effect():
     return base_cfg(
         inspect.currentframe().f_code.co_name,
         corpus=get_word_corpus(),
-        corpus_effects=Effects(
-            [
-                Padding(p=1, w_ratio=[0.5, 0.51], h_ratio=[0.7, 0.71], center=True),
-            ]
-        ),
+        # corpus_effects=Effects(
+        #     [
+        #         Padding(p=1, w_ratio=[0.5, 0.51], h_ratio=[0.7, 0.71], center=True),
+        #     ]
+        # ),
     )
 
 def compact():
@@ -117,8 +117,8 @@ def imgaug_emboss_example():
 # The configuration file must have a configs variable
 configs = [
     no_effect(),
-    compact(),
-    large_spacing(),
+    # compact(),
+    # large_spacing(),
     perspective_transform(),
     imgaug_emboss_example()
 ]
